@@ -1,6 +1,6 @@
 import React , {useState} from 'react';
 import { StyleSheet, View , Text, Button, FlatList, TouchableOpacity} from 'react-native';
-import ChatRoomListHeader from './ChatListHeader';
+import ChatRoomListHeader from './ChatRoomListHeader';
 import ChatRoomBanner from './ChatRoomBanner';
 
 function ChatRoomList(){

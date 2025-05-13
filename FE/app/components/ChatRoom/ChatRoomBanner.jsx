@@ -1,6 +1,6 @@
 import React , {useState} from 'react';
 import { StyleSheet, View , Text, Button} from 'react-native';
-import ChatRoomListHeader from './ChatListHeader';
+import ChatRoomListHeader from '../ChatRoomList/ChatRoomListHeader';
 
 
 /**

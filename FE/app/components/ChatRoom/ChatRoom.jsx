@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { StyleSheet, FlatList,  View , TouchableOpacity} from 'react-native';
 import ChatRoomHeader from './ChatRoomHeader';
-import ChatRoomInput from "./ChatInput";
+import ChatRoomInput from "../ChatInput";
 import Chat from "./Chat"
 
 /**
