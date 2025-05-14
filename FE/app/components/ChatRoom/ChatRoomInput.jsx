@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, View , Text, TextInput, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView, Input} from 'react-native';
+import { StyleSheet, View , TextInput} from 'react-native';
 
 
 /**

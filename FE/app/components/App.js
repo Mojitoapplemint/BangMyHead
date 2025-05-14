@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView} from 'react-native';
 import React from "react";
 import ChatRoomList from './ChatRoomList/ChatRoomList';
 import ChatRoomListHeader from './ChatRoomList/ChatRoomListHeader';
