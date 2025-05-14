@@ -3,6 +3,7 @@ import { StyleSheet, FlatList,  View , TouchableOpacity, SafeAreaView, Platform,
 import ChatRoomHeader from './ChatRoomHeader';
 import ChatRoomInput from "./ChatRoomInput";
 import Chat from "./Chat"
+import SystemMessage from './SystemMessage';
 
 
 /**
@@ -29,6 +30,7 @@ function ChatRoom() {
         <View style={{flex:9}}>
             <FlatList data={messages} renderItem={({item})=>(<TouchableOpacity>{item}</TouchableOpacity>)}
             />
+            <SystemMessage></SystemMessage>
         </View>
         <View style={{flex:1, justifyContent:"flex-end"}}>
             <ChatRoomInput style={{flex:1}} addMessage = {addMessage}/>
