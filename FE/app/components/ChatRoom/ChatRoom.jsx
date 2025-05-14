@@ -28,7 +28,7 @@ function ChatRoom() {
             <ChatRoomHeader/>
         </View>
         <View style={{flex:9}}>
-            <FlatList data={messages} renderItem={({item})=>(<TouchableOpacity>{item}</TouchableOpacity>)}
+            <FlatList data={messages} renderItem={({item})=>(<View>{item}</View>)}
             />
             <SystemMessage></SystemMessage>
         </View>
