@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { StyleSheet, View , Text, TextInput, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView, Input} from 'react-native';
-import ChatRoom from './ChatRoom';
-import Chat from "./ChatRoom/Chat";
+
 
 /**
  * 
