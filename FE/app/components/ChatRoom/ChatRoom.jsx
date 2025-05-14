@@ -24,14 +24,9 @@ function ChatRoom() {
         <View style={{...styles.horizontalRule, flex:1}}>
             <ChatRoomHeader/>
         </View>
-
-
         <View style={{flex:9}}>
-
             <FlatList data={messages} renderItem={({item})=>(<TouchableOpacity>{item}</TouchableOpacity>)}
             />
-
-
         </View>
         <View style={{flex:1, justifyContent:"flex-end"}}>
             <ChatRoomInput style={{flex:1}} addMessage = {addMessage}/>
