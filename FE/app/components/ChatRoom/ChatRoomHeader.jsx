@@ -23,10 +23,8 @@ const styles = StyleSheet.create({
     header:{
         flexDirection: "row",
         flex:1,
-        paddingTop:20,
         alignItems:"center",
-        justifyContent:"space-between"
-        
+        justifyContent:"space-between",
     },
     title:{
         fontSize:20,

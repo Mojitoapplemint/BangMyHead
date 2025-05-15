@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import { StyleSheet, FlatList,  View , TouchableOpacity} from 'react-native';
+import { StyleSheet, FlatList,  View , TouchableOpacity, SafeAreaView, Platform, StatusBar} from 'react-native';
 import ChatRoomHeader from './ChatRoomHeader';
-import ChatRoomInput from "../ChatInput";
+import ChatRoomInput from "./ChatRoomInput";
 import Chat from "./Chat"
+import SystemMessage from './SystemMessage';
+
 
 /**
  * 실제 채팅창
@@ -20,24 +22,21 @@ function ChatRoom() {
         console.log(messages)
     }
 
-    return (<View style={styles.chatRoomContainer}>
+    return (<SafeAreaView style={styles.chatRoomContainer}>
+
         <View style={{...styles.horizontalRule, flex:1}}>
             <ChatRoomHeader/>
         </View>
-
-
         <View style={{flex:9}}>
-
-            <FlatList data={messages} renderItem={({item})=>(<TouchableOpacity>{item}</TouchableOpacity>)}
+            <FlatList data={messages} renderItem={({item})=>(<View>{item}</View>)}
             />
-
-
+            <SystemMessage></SystemMessage>
         </View>
         <View style={{flex:1, justifyContent:"flex-end"}}>
             <ChatRoomInput style={{flex:1}} addMessage = {addMessage}/>
         </View>
         
-    </View>
+    </SafeAreaView>
 )
 ;}
 
@@ -46,7 +45,9 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"space-between",
         backgroundColor: "F2F2F2",
-        paddingBottom:20
+        paddingBottom:20,
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        
     },
     horizontalRule: {
         borderBottomColor: '#aaa',
