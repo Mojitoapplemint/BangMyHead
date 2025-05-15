@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View , Text, Button, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 
 function ChatRoomListHeader(){
     return (
@@ -10,7 +12,7 @@ function ChatRoomListHeader(){
         </View>
         <View style={styles.control}>
             <TouchableOpacity style={styles.button}><Icon name="plus" size={30} color="white"/></TouchableOpacity>
-            <TouchableOpacity style={styles.button}><Icon name="smileo" size={30} color="white"/></TouchableOpacity>
+            <TouchableOpacity style={styles.button}><AntDesign name="smileo" size={30} color="white"/></TouchableOpacity>
         </View>
     </View>)
 }
@@ -24,6 +26,7 @@ const styles = StyleSheet.create({
         paddingTop:0
     },
     control:{
+        alignSelf:"center",
         flexDirection:"row",
         justifyContent:"center",
         alignItems:"center"

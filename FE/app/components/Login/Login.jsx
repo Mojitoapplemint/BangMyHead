@@ -39,6 +39,7 @@ function Login({navigation}){
     };
 
     return (<SafeAreaView style={styles.loginContainer}>
+        {/* <Button onPress={(isAuthenticated)=>{ isAuthenticated && navigation.navigate("Home")}} title="Login"/> */}
         <View style = {styles.welcomeBox}><Text style={styles.welcomeMessage}>Welcome!</Text></View>
         <View style = {{flex:1}}>
             <TextInput value={email} placeholder="Email" onChange={setEmail} style={styles.input}></TextInput>
@@ -46,12 +47,12 @@ function Login({navigation}){
         </View>
         <View style = {styles.buttonBox}>
             <View style = {styles.buttonRow}>
-            <Button color="#2C2C2C" onPress={validateForm && {()=>{navigation.navigate("Home")}}} title="Login"/>
+            <Button color="#2C2C2C" onPress={()=>{navigation.navigate("Home")}} title="Login"/>
             <Button color="#2C2C2C" onPress={()=>{navigation.navigate("RegisterScreen")}} title="register"/>
             </View>
 
         </View>
-    </SafeAreaView>)
+    </SafeAreaView>);
 }
 
 const styles = StyleSheet.create({

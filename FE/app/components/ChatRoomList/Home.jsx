@@ -1,29 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Platform} from 'react-native';
 import React from "react";
 import ChatRoomList from './ChatRoomList';
 import ChatRoomListHeader from './ChatRoomListHeader';
 
 function Home() {
     return (
-    <View style={{flex:1}}>
-      <StatusBar style="light" />
+    <SafeAreaView style={styles.homeContainer}>
       <View style={styles.container}>
           <View style={styles.header}><ChatRoomListHeader /></View>
           <View style={styles.lists}><ChatRoomList /></View>
           <View style={styles.footer}></View>
       </View>
-    </View>);
+    </SafeAreaView>);
 }
 
 //<ChatListHeader style={styles.header}/>
 const styles = StyleSheet.create({
-    container:{
-    flex:1,
-    },
-    header:{
-        paddingTop:50,
+    homeContainer:{
         flex:1,
+        marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    },
+    container:{
+            flex:1,
+        },
+    header:{
+        flex:1,
+        justifyContent:"flex-end",
         backgroundColor:"#B6B09F"
     },
     lists:{
