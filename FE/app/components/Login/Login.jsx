@@ -4,10 +4,11 @@ import {View, SafeAreaView, StyleSheet, Text, Platform, StatusBar, TextInput, Bu
 
 function Login({navigation}){
 
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
-    const [isFormValid, setIsFormValid] = useState(false);
+    const [isAuthenticated, setAuthenticated] = useState(false);
     
     function validateForm() {
         let errors = {};
@@ -26,35 +27,26 @@ function Login({navigation}){
             errors.password = 'Password must be at least 6 characters.';
         }
 
+        //TODO Ask Server to check email and password
+
         // Set the errors and update form validity
-        console.log("Email:", errors.email, "// Password:", errors.password)
         setErrors(errors);
-        setIsFormValid(Object.keys(errors).length === 0);
+        setAuthenticated(Object.keys(errors).length === 0);
+        setEmail("");
+        setPassword("");
+        
+        return isAuthenticated
     };
-
-    const handleSubmit = () => {
-        if (isFormValid) {
-
-            // Form is valid, perform the submission logic
-            console.log('Form submitted successfully!');
-        } else {
-            
-            // Form is invalid, display error messages
-            console.log('Form has errors. Please correct them.');
-        }
-    };
-
-
 
     return (<SafeAreaView style={styles.loginContainer}>
         <View style = {styles.welcomeBox}><Text style={styles.welcomeMessage}>Welcome!</Text></View>
         <View style = {{flex:1}}>
-            <TextInput placeholder="Email" onChange={setEmail} style={styles.input}></TextInput>
-            <TextInput placeholder="Passwod" onChange={setPassword} style={styles.input}></TextInput>
+            <TextInput value={email} placeholder="Email" onChange={setEmail} style={styles.input}></TextInput>
+            <TextInput value={password} placeholder="Passwod" onChange={setPassword} style={styles.input}></TextInput>
         </View>
         <View style = {styles.buttonBox}>
             <View style = {styles.buttonRow}>
-            <Button color="#2C2C2C" onPress={validateForm} title="Login"/>
+            <Button color="#2C2C2C" onPress={validateForm && {()=>{navigation.navigate("Home")}}} title="Login"/>
             <Button color="#2C2C2C" onPress={()=>{navigation.navigate("RegisterScreen")}} title="register"/>
             </View>
 
