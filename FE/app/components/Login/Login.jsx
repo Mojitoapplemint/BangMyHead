@@ -1,39 +1,16 @@
 import React, {useState, useEffect} from "react";
-import {View, SafeAreaView, StyleSheet, Text, Platform, StatusBar, TextInput} from "react-native";
+import {View, SafeAreaView, StyleSheet, Text, Platform, StatusBar, TextInput, Button} from "react-native";
 
 
-function Login(){
+function Login({navigation}){
 
-    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
     const [isFormValid, setIsFormValid] = useState(false);
-
-    return (<SafeAreaView style={styles.loginContainer}>
-        <View style = {styles.welcomeBox}><Text style={styles.welcomeMessage}>Welcome!</Text></View>
-        <View style = {styles.loginBox}>
-            <TextInput style={styles.username}></TextInput>
-            <TextInput style={styles.password}></TextInput>
-
-            </View>
-        <View style = {styles.registerButtonBox}></View>
-    </SafeAreaView>)
     
-    useEffect(() => {
-
-        // Trigger form validation when name, 
-        // email, or password changes
-        validateForm();
-    }, [name, email, password]);
-
-    const validateForm = () => {
+    function validateForm() {
         let errors = {};
-
-        // Validate name field
-        if (!name) {
-            errors.name = 'Name is required.';
-        }
 
         // Validate email field
         if (!email) {
@@ -50,6 +27,7 @@ function Login(){
         }
 
         // Set the errors and update form validity
+        console.log("Email:", errors.email, "// Password:", errors.password)
         setErrors(errors);
         setIsFormValid(Object.keys(errors).length === 0);
     };
@@ -65,6 +43,23 @@ function Login(){
             console.log('Form has errors. Please correct them.');
         }
     };
+
+
+
+    return (<SafeAreaView style={styles.loginContainer}>
+        <View style = {styles.welcomeBox}><Text style={styles.welcomeMessage}>Welcome!</Text></View>
+        <View style = {{flex:1}}>
+            <TextInput placeholder="Email" onChange={setEmail} style={styles.input}></TextInput>
+            <TextInput placeholder="Passwod" onChange={setPassword} style={styles.input}></TextInput>
+        </View>
+        <View style = {styles.buttonBox}>
+            <View style = {styles.buttonRow}>
+            <Button color="#2C2C2C" onPress={validateForm} title="Login"/>
+            <Button color="#2C2C2C" onPress={()=>{navigation.navigate("RegisterScreen")}} title="register"/>
+            </View>
+
+        </View>
+    </SafeAreaView>)
 }
 
 const styles = StyleSheet.create({
@@ -74,23 +69,33 @@ const styles = StyleSheet.create({
     },
     welcomeBox:{
         flex:2,
-        backgroundColor:"red",
-        justifyContent:"flex-end",
+        justifyContent:"center",
         paddingBottom:"10%"
     },
-    loginBox:{
+    buttonBox:{
         flex:1,
+
+        width:"60%",
+        alignSelf:"center"
     },
-    registerButtonBox:{
+    buttonRow:{
+
+        flexDirection:"row",
         flex:1,
-        backgroundColor:"yellow",
+        alignItems:"flex-start",
+        justifyContent:"space-evenly",
     },
     welcomeMessage:{
         fontSize:30,
         alignSelf:"center"
     },
-    username:{
-
+    input:{
+        width:"60%",
+        backgroundColor: "#EAE4D5",
+        alignSelf:"center",
+        marginVertical:"3%",
+        borderWidth:3,
+        borderRadius:10,
     }
 
 })
